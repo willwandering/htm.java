@@ -3,10 +3,11 @@ jdk:
 - oraclejdk8
 after_success:
 - sudo chown -R ${USER} /home/travis/build/numenta
-- mvn clean integration-test -Dmaven.test.failure.ignore=true jacoco:report coveralls:report
+#- mvn clean integration-test -Dmaven.test.failure.ignore=true jacoco:report coveralls:report
 - mvn package -DskipTests
 deploy:
   provider: releases
+  skip_cleanup: true
   api_key:
     secure: MfS3Y+vSP44kYyrRadI+Iv9KlWMTDzxRsWU8KSsZRrzNTW1gwlWz2ydBiPHGeMCz01dhzfo/w4GQzFqUCuwIqsRy+kAXFKOVGgH/thien6MJNt4o2dpDoD7C0yv9dollP5+eny146NL3IaDomsTA6mwnC4IepjyRrkOr2vmWPNs5q9WL4SO3kJi2ynKLcBm5ojACeb7pnXAZWmUZAF4k26vmGGe2IKGmNlr66/tQbTFoppfK5lCizoxSFg+mVWPUCi4pie7T+AQODUYyokzu7RH9WqiL9hvMYjJSCZ6rvJQWdszqu/MgwYsHGxHrKixzUa+Mo8r7bXxDfnm5vs2FSEJPciA5+Gijc/b5xEk7jN0x7ebq2ZY9AMkT04/qUoq1jNqnVrrqZx8urYMA3GI32rV30EDPOSNXKF6PZna5dMj5SqQNmaBUdQgSrSY151vPhL5ES6hxhZHPkYPX3a8yVMqczHfBQX1SS+T+RmiYfPXVSKLD9NZRDqx0gxoU3lwzkVigH8/NepieQTcTi3IJAvLxvndXxecAowd/pieehIe10ZjLMcmxKSzQpWYqrBICw+aegjfCq8GsKe/eFCrEeCm7EkJchBMQGQp9Jdnvpr6Euq+vl4ub8WUC4i8+E7e8Faxhv4Y5qrkGk6W784XMd2IQgvvdaKIXSmM7FNBHz4o=
   file: target/htm.java-0.6.13.jar
